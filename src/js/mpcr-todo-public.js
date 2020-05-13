@@ -53,10 +53,14 @@ const prepare = mpcrTodoMain => {
 };
 
 const removeItem = (el, mpcrTodoMain) => {
-  mpcrTodoMain
-    .querySelector(`.mpcr-todo__item[data-row="${el.dataset.row}"]`)
-    .remove();
-  handleUpdateTodo(prepare(mpcrTodoMain), mpcrTodoMain.dataset.todoId);
+  if (
+    mpcrTodoMain.querySelector(`.mpcr-todo__item[data-row="${el.dataset.row}"]`)
+  ) {
+    mpcrTodoMain
+      .querySelector(`.mpcr-todo__item[data-row="${el.dataset.row}"]`)
+      .remove();
+    handleUpdateTodo(prepare(mpcrTodoMain), mpcrTodoMain.dataset.todoId);
+  }
 };
 
 const handleNewItem = (event, mpcrTodoMain) => {
@@ -80,14 +84,18 @@ const handleNewItem = (event, mpcrTodoMain) => {
 };
 
 const handleExistingItems = (event, mpcrTodoMain) => {
-  if (event.type === 'focusout' || event.key === 'Enter') {
+  if (
+    (event.type === 'focusout' || event.key === 'Enter') &&
+    event.currentTarget.value
+  ) {
     handleUpdateTodo(prepare(mpcrTodoMain), mpcrTodoMain.dataset.todoId);
   }
 
-  if (event.key === 'Backspace') {
-    if (!event.currentTarget.value) {
-      removeItem(event.currentTarget, mpcrTodoMain);
-    }
+  if (
+    (event.type === 'cut' || event.type === 'focusout') &&
+    !event.currentTarget.value
+  ) {
+    removeItem(event.currentTarget, mpcrTodoMain);
   }
 };
 
@@ -155,6 +163,9 @@ mpcrTodos.forEach(mpcrTodo => {
       handleExistingItems(event, mpcrTodo)
     );
     label.addEventListener('focusout', event =>
+      handleExistingItems(event, mpcrTodo)
+    );
+    label.addEventListener('cut', event =>
       handleExistingItems(event, mpcrTodo)
     );
   });
