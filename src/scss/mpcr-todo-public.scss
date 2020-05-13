@@ -74,10 +74,15 @@
 
   &__label {
     border-left: 1px solid #fbcaca;
+    transition: background 0.3s ease;
 
     input[type='text'] {
       width: 100%;
       padding: 0;
     }
   }
+}
+
+.required {
+  background: #fbcaca;
 }
