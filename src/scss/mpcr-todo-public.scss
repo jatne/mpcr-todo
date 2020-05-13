@@ -1,0 +1,83 @@
+@import 'base/config';
+@import 'base/mixins';
+
+.mpcr-todo {
+  font-family: $font-family;
+  background: $color-white;
+  box-shadow: 0px 2px 5px 1px #e1dede;
+  font-size: 13px;
+
+  input {
+    line-height: 1.4;
+
+    &[type='text'] {
+      font-family: $font-family;
+      font-weight: 600;
+      border: none;
+      background: transparent;
+      box-shadow: none;
+      font-size: 13px;
+      color: #6d6d6d;
+
+      &::placeholder {
+        color: #a0a0a0;
+        opacity: 1;
+      }
+
+      &:-ms-input-placeholder {
+        color: #a0a0a0;
+      }
+
+      &::-ms-input-placeholder {
+        color: #a0a0a0;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  &,
+  .entry .entry-content > & {
+    max-width: 250px;
+  }
+
+  &__item {
+    @include grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 0.2em;
+    border-bottom: 1px solid transparent;
+
+    &:not(:last-of-type) {
+      border-color: #e0f0fd;
+    }
+
+    .mpcr-todo__new & {
+      background: #f3f3f3;
+      border-color: #e0f0fd;
+    }
+  }
+
+  &__status,
+  &__label {
+    padding: var(--padding-y, 0.5em) 1em;
+
+    .mpcr-todo__new & {
+      --padding-y: 0.75em;
+    }
+  }
+
+  &__status {
+    border-right: 1px solid #fbcaca;
+  }
+
+  &__label {
+    border-left: 1px solid #fbcaca;
+
+    input[type='text'] {
+      width: 100%;
+      padding: 0;
+    }
+  }
+}

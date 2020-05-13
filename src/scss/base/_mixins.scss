@@ -1,0 +1,34 @@
+@mixin grid {
+  display: grid;
+  width: 100%;
+}
+
+@mixin flex($wrap: false, $justify: flex-start, $alignItems: flex-start) {
+  display: flex;
+  width: 100%;
+  @if $wrap {
+    flex-wrap: wrap;
+  }
+  @if $justify {
+    justify-content: $justify;
+  }
+  @if $alignItems {
+    align-items: $alignItems;
+  }
+}
+
+@mixin pseudo($beforeAfter: before, $relativeToParent: true) {
+  @if ($beforeAfter == before or $beforeAfter == after) {
+    @if $relativeToParent {
+      position: relative;
+    }
+
+    &::#{$beforeAfter} {
+      content: '';
+      position: absolute;
+      @content;
+    }
+  } @else {
+    @warn '`#{$beforeAfter}` - to nie poprawna wartosc, dopuszczalne wartosci to "before" lub "after"';
+  }
+}

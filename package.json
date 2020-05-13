@@ -1,0 +1,35 @@
+{
+  "name": "mpcr-todo",
+  "version": "1.0.0",
+  "description": "Simple plugin for the recruitment process",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jatne/mpcr-todo.git"
+  },
+  "keywords": [
+    "to-do"
+  ],
+  "author": "Paweł Malok",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jatne/mpcr-todo/issues"
+  },
+  "homepage": "https://github.com/jatne/mpcr-todo#readme",
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "babel-preset-env": "^1.7.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-babel": "^8.0.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-sass": "^4.1.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp-uglifycss": "^1.1.0"
+  }
+}
