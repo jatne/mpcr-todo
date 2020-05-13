@@ -123,7 +123,7 @@ class Mpcr_Todo_Public
      * class.
      */
 
-    wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/mpcr-todo-public.js', array('jquery'), $this->version, false);
+    wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/mpcr-todo-public.js?v=' . microtime(), array('jquery'), $this->version, false);
 
     wp_localize_script($this->plugin_name, 'ajax_object', array(
       'ajaxurl' => admin_url('admin-ajax.php'),
