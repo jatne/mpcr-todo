@@ -60,8 +60,20 @@ const removeItem = (el, mpcrTodoMain) => {
 };
 
 const handleNewItem = (event, mpcrTodoMain) => {
-  if (event.key !== 'Enter' || !event.currentTarget.value) {
-    return false;
+  mpcrTodoMain
+    .querySelector('.mpcr-todo__new .mpcr-todo__label')
+    .classList.remove('required');
+
+  if (event.key !== 'Enter') {
+    return;
+  }
+
+  if (!event.currentTarget.value) {
+    mpcrTodoMain
+      .querySelector('.mpcr-todo__new .mpcr-todo__label')
+      .classList.add('required');
+
+    return;
   }
 
   addNewItem(event.currentTarget, mpcrTodoMain);
